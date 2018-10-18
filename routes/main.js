@@ -9,7 +9,7 @@ const routes = function(app, socket) {
     // Dummy TCP communication
     app.get('/communicate', (req, res) => {
         // Write data through the socket
-        socket.write('Hi from /communitcate route!\r\n',
+        socket.write('Hi from /communicate route!\r\n',
             // Send http response when finished writing to socket
             () => {
                 res.send('OK: Message sent')
