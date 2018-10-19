@@ -1,6 +1,9 @@
 const express = require('express')
-const app = express()
 const routes = require('./routes/main')
+const app = express()
+
+// Declaring "public" folder as static folder
+app.use(express.static('./public'))
 
 // Creating TCP Socket connection
 const socket = require('./socket/socket')
