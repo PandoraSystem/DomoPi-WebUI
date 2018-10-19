@@ -3,7 +3,7 @@ const routes = function(app, socket) {
 
     // Default example route
     app.get('/', (req, res) => {
-        res.send('Hello World!');
+        res.render('index');
     });
     
     // Dummy TCP communication
@@ -12,7 +12,7 @@ const routes = function(app, socket) {
         socket.write('Hi from /communicate route!\r\n',
             // Send http response when finished writing to socket
             () => {
-                res.send('OK: Message sent')
+                res.render('message')
             })
     })
 }
