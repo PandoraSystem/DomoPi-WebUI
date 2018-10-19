@@ -5,7 +5,7 @@ const routes = require('./routes/main')
 const app = express()
 
 // Declaring "public" folder as static folder
-app.use(express.static('./public'))
+app.use(express.static(path.join(__dirname,'./public')))
 
 // Registering Handlebars as default view engine
 app.engine('hbs', exphbs({
