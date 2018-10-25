@@ -1,5 +1,5 @@
 const express = require('express')
-var path = require('path');
+const path = require('path');
 const exphbs = require('express-handlebars')
 const routes = require('./routes/main')
 const app = express()
@@ -12,7 +12,8 @@ app.engine('hbs', exphbs({
 	// Handlebars configuration
 	extname: '.hbs',
 	layoutsDir: path.join(__dirname,'./views/layouts'),
-	defaultLayout: 'main'
+	defaultLayout: 'main',
+	partialsDir: path.join(__dirname,'./views/partials/')
 }))
 app.set('view engine', 'hbs')
 
