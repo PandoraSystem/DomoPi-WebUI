@@ -1,11 +1,16 @@
 const express = require('express')
 const path = require('path');
+const mongoose = require('mongoose')
+const session = require('express-session')
+const passport = require('passport')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const exphbs = require('express-handlebars')
 const routes = require('./routes/main')
 const app = express()
 
-// Declaring "public" folder as static folder
-app.use(express.static(path.join(__dirname,'./public')))
+// Connect to MongoDB with Mongoose (TODO: parameters in config file)
+mongoose.connect('mongodb://localhost:27017/domopi', { useNewUrlParser: true })
 
 // Registering Handlebars as default view engine
 app.engine('hbs', exphbs({
