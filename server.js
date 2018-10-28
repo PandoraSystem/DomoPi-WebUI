@@ -25,11 +25,36 @@ app.set('view engine', 'hbs')
 // Registering "views" folder
 app.set('views', path.join(__dirname,'./views'));  
 
-// Creating TCP Socket connection
+/*** SETTING UP MIDDLEWARES ***/
+// Body and Cookie Parser to parse
+// form and cookie data into req object
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+
+// Declaring "public" folder as static folder
+app.use(express.static(path.join(__dirname,'./public')))
+
+// Require Passport local authentication strategy
+require('./passport')(passport)
+
+// Initialize express session
+app.use(session({
+	secret: 'YouWouldLikeToKnowUh',
+	saveUninitialized: false,
+	resave: false
+}))
+
+// Initialize Passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+// Creating TCP Socket connection with DomoPi Core
 const socket = require('./socket/socket')
 
-// Retrieve App Routes
-routes(app, socket)
+// Routes
+app.use('/', require('./routes/main')(socket))
+app.use('/', require('./routes/auth')(passport))
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
