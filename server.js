@@ -1,3 +1,8 @@
+/**
+ *  server.js
+ *  Main application file
+ */
+
 const express = require('express')
 const path = require('path');
 const mongoose = require('mongoose')
@@ -6,7 +11,8 @@ const passport = require('passport')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const exphbs = require('express-handlebars')
-const routes = require('./routes/main')
+
+// Initialize Express
 const app = express()
 
 // Connect to MongoDB with Mongoose (TODO: parameters in config file)
@@ -56,6 +62,7 @@ const socket = require('./socket/socket')
 app.use('/', require('./routes/main')(socket))
 app.use('/', require('./routes/auth')(passport))
 
+// Boooom!!!
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('Awesome DomoPi WebApp listening on port 3000!')
 })
