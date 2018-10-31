@@ -2,9 +2,9 @@
   "name": "domopi",
   "version": "1.0.0",
   "description": "Domotic system with rasp",
-  "main": "./webapp/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./webapp/server.js",
+    "start": "node server.js",
     "dev": "gulp",
     "gulp-sass": "gulp sass"
   },
