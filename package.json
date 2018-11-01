@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "gulp",
-    "gulp-sass": "gulp sass"
+    "build": "gulp sass"
   },
   "repository": {
     "type": "git",

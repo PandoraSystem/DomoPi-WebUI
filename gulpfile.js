@@ -39,11 +39,11 @@ gulp.task('nodemon', function (cb) {
 		// thanks @matthisk
 		if (!started) {
 			cb();
-			started = true; 
-		} 
+			started = true;
+		}
 	});
 });
 
 // Default task: start BrowserSync, Nodemon and compile sass
-gulp.task('default', ['browser-sync','sass:watch'], function () {
+gulp.task('default', ['sass','browser-sync','sass:watch'], function () {
 });
