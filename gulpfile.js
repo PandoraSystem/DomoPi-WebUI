@@ -5,19 +5,19 @@ var gulp = require('gulp')
 var sass = require('gulp-sass')
 var browserSync = require('browser-sync')
 var nodemon = require('nodemon')
- 
+
 sass.compiler = require('node-sass');
- 
+
 // Sass compile task
 gulp.task('sass', function () {
-  return gulp.src('./webapp/sass/**/*.scss')
+  return gulp.src('./sass/**/*.scss')
     .pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
-    .pipe(gulp.dest('./webapp/public/css'));
+    .pipe(gulp.dest('./public/css'));
 });
 
 // Sass compile task :watch
 gulp.task('sass:watch', function () {
-  gulp.watch('./webapp/sass/**/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
 // BrowserSync task
