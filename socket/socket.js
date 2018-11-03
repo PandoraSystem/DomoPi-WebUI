@@ -12,7 +12,7 @@ const socket = net.createConnection({
 	}
 )
 
-// Listenfor incoming data and log it to console
+// Listen for incoming data and log it to console
 socket.on('data', (data) => console.log(data.toString()))
 
 // Notifiy connection closing to console

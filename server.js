@@ -16,7 +16,12 @@ const exphbs = require('express-handlebars')
 const app = express()
 
 // Connect to MongoDB with Mongoose (TODO: parameters in config file)
-mongoose.connect('mongodb://localhost:27017/domopi', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/domopi', { useNewUrlParser: true },
+	(err) => { if (err) {
+		console.log('ERROR: Failed to connect MongoDB\nExiting...\n')
+		process.exit(1)
+	}}
+)
 
 // Registering Handlebars as default view engine
 app.engine('hbs', exphbs({
@@ -29,7 +34,7 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs')
 
 // Registering "views" folder
-app.set('views', path.join(__dirname,'./views'));  
+app.set('views', path.join(__dirname,'./views'));
 
 /*** SETTING UP MIDDLEWARES ***/
 // Body and Cookie Parser to parse
