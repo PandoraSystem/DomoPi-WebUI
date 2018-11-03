@@ -1,0 +1,28 @@
+<div class="container-fluid">
+
+    <div class="jumbotron jumbotron-fluid" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12"><h1 class="display-3 text-center">Devices</h1></div>
+
+                {{#each devices}}
+                <div class="col-md">
+                    <div class="card" style="min-width: 9rem; margin-bottom: 30px">
+                        <img class="card-img-top" src="/img/devices/light-bulb.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ this.name }}</h5>
+                            <p class="card-text">{{ this.description }}</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <label class="switch switch-lg switch-3d switch-pill switch-success">
+                                <input type="checkbox" class="switch-input" {{#if this.status }}checked{{/if}}>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

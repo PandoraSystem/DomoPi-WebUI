@@ -19,14 +19,14 @@ module.exports = function(socket) {
         } else {
             res.redirect('/login')
         }
-        
+
     }
 
     // DEFAULT HOMEPAGE (DASHBOARD) route
     router.get('/', loggedIn, (req, res) => {
         res.render('index');
     });
-    
+
     // LOGIN route
     router.get('/login', (req, res, next) => {
         res.render('login', {
@@ -51,6 +51,26 @@ module.exports = function(socket) {
     router.get('/logout', (req, res) => {
         req.logout()
         res.redirect('/login')
+    })
+
+    // [DUMMY] DEVICES route
+    router.get('/devices', (req, res) => {
+
+        var dev1 = {
+            name: 'Lampadina soggiorno',
+            description: 'Lampadina vicino alla porta',
+            status: 1
+        }
+        var dev2 = {
+            name: 'Lampadina Camera',
+            description: 'Lampadario in camera',
+            status: 0
+        }
+        const dummyDevices = [dev1, dev2]
+
+        res.render('devices', {
+            devices: dummyDevices
+        })
     })
 
     // Dummy TCP communication
