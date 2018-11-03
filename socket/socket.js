@@ -4,7 +4,7 @@ const net = require('net')
 const socket = net.createConnection({
 		port:9000,
 		host:'localhost'
-	}, 
+	},
 	() => {
 	    // 'connect' listener
 	    console.log('connected to server!')
@@ -19,6 +19,17 @@ socket.on('data', (data) => console.log(data.toString()))
 socket.on('end', () => {
 	socket.end()
 	console.log('disconnected from server')
+})
+
+// Handle any "error" event that might occur
+socket.on('error', (err) => {
+	const errorMessage = '===\n'
+					   + 'ERROR ' + err.code + ' raised while trying to connect to TCP server:\n'
+					   + 'Syscall: \"' + err.syscall + '\"\n'
+					   + 'Host: \"' + err.address + '\"\n'
+					   + 'Port: \"' + err.port + '\"\n'
+					   + '==='
+	console.log(errorMessage)
 })
 
 module.exports = socket
