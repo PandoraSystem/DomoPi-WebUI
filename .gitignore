@@ -1,3 +1,7 @@
+#  Production files  #
+######################
+public/css/
+
 #      Dev Files     #
 ######################
 .eslintrc
